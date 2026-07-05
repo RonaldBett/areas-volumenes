@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Áreas & Volúmenes</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-name">Áreas y Volúmenes</span>
+        <span class="brand-sub">ADSO · SENA · Ronald Betancurt</span>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="#portada">Portada</a>
+        <a href="#about">Introducción</a>
+        <a href="#calcular">Área y Volumen</a>
+        <a href="#conclu">Conclusión</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PORTADA -->
+  <section class="portada" id="portada">
+    <div class="portada-content">
+      <p class="portada-label">portada</p>
+      <h1 class="portada-title">Cálculo de áreas y volúmenes</h1>
+      <p class="portada-text">Evidencia <span class="texto-resaltado-2">GA2-240201528-AA4-EV01</span><br>
+        Estudiante: <span class="texto-resaltado">Ronald Esteban Betancurt B.</span><br>
+        ADSO - SENA - year</p>
+      <a href="#calcular" class="btn-primary">Área y Volumen ↓</a>
+    </div>
+    <div class="portada-deco" aria-hidden="true">
+      <div class="deco-circle c1"></div>
+      <div class="deco-circle c2"></div>
+    </div>
+  </section>
+
+  <!-- INTRODUCCION-->
+  <section class="about section-pad" id="about">
+    <div class="container">
+      <h2 class="section-title">Introducción</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Como parte de la competencia <span class="texto-resaltado">240201528</span>  (Razonar cuantitativamente frente a situaciones susceptibles de ser abordadas de manera matemática), del programa de formación de Análisis y desarrollo de software <span class="texto-resaltado-3">ADSO</span>, se busca conocer, interiorizar e implementar el cálculo de áreas, perímetros y volúmenes de figuras geométricas. 
+             Es por ello que se realizó un algoritmo que permite calcular el <span class="texto-resaltado-2">área y perímetro de 5 figuras planas</span>; el área y volumen de 5 sólidos regulares; y el <span class="texto-resaltado-4">volumen de figuras irregulares</span>. <br> 
+             En este caso se escribió el algoritmo utilizando <span class="texto-resaltado-3">JavaScript</span>, y para interactuar con él se utiliza <span class="texto-resaltado">HTML</span> y <span class="texto-resaltado-2">CSS</span>.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULAR -->
+  <section class="calcular section-pad" id="calcular">
+    <div class="container">
+      <h2 class="section-title">Área y Volumen</h2>
+      <p class="section-sub">Calcular el área perímetro o volumen de poligonos</p>
+      <select name="select-calcular" onchange="mostrarOcultarFigura(event)" id="select-calcular" class="btn-primary select">
+        <option value="div-circulo" onchange="">Circulo</option> 
+        <option value="div-cuadrado" onchange="">Cuadrado</option> 
+        <option value="div-rectangulo" onchange="">Rectángulo</option> 
+        <option value="div-triangulo" onchange="">Triángulo</option>
+        <option value="div-paralelo" onchange="">Paralelogramo</option>
+        <option value="div-cubo" onchange="">Cubo</option>
+        <option value="div-prisma" onchange="">Prisma</option>
+        <option value="div-esfera" onchange="">Esfera</option>
+        <option value="div-cilindro" onchange="">Cilindro</option>
+        <option value="div-cono" onchange="">Cono</option>
+        <option value="div-irregular" onchange="">Sólido Irregular</option>        
+      </select>
+      <div class="div-explicacion-arquimedes oculto" id="div-explicacion-arquimedes">
+        <p class="explicacion-arquimedes">Para calcular el volumen de un <span class="texto-resaltado">sólido irregular</span>, podemos usar el principio de <span class="texto-resaltado-2">Arquímedes</span>, que establece que todo cuerpo sumergido total o parcialmente en un fluido experimenta una fuerza de empuje vertical hacia arriba igual al peso del fluido desalojado. Esta premisa permite calcular el <span class="texto-resaltado-3">volumen de objetos irregulares</span> midiendo el volumen o peso del agua que desplazan al sumergirse.</p>
+        <p class="explicacion-arquimedes">En este caso, usando un recipiente con forma <span class="texto-resaltado-4">cilíndrica</span> relleno con agua, podemos calcular el volumen del agua que se desplaza hacia arriba al sumergir un cuerpo.</p>
+      </div>
+      <div class="div-calcular" id="div-circulo">
+        <div class="div-img-calcular">
+          <img src="img/circulo.png" alt="circulo">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Radio (r)</p>
+              <input type="number" id="input-radio" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Perímetro: <span class="resultado-perimetro" id="resultado-perimetro"></span></p>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="div-calcular oculto " id="div-cuadrado">
+        <div class="div-img-calcular">
+          <img src="img/cuadrado.png" alt="cuadrado">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Lado (a)</p>
+              <input type="number" id="input-lado" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Perímetro: <span class="resultado-perimetro" id="resultado-perimetro"></span></p>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+          </div>
+        </div>
+      </div>  
+
+      <div class="div-calcular oculto " id="div-rectangulo">
+        <div class="div-img-calcular">
+          <img src="img/rectangulo.png" alt="rectangulo">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Alto (a)</p>
+              <input type="number" id="input-alto" required>
+              <p>Ancho (l)</p>
+              <input type="number" id="input-ancho" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Perímetro: <span class="resultado-perimetro" id="resultado-perimetro"></span></p>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+          </div>
+        </div>
+      </div>  
+
+      <div class="div-calcular oculto " id="div-triangulo">
+        <div class="div-img-calcular">
+          <img src="img/triangulo.png" alt="triangulo">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Alto (b)</p>
+              <input type="number" id="input-alto-triangulo" required>
+              <p>Base (c)</p>
+              <input type="number" id="input-base" required>
+              <p>Hipotenusa (a)</p>
+              <input type="number" id="input-hipote" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Perímetro: <span class="resultado-perimetro" id="resultado-perimetro"></span></p>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+          </div>
+        </div>
+      </div>    
+
+      <div class="div-calcular oculto " id="div-paralelo">
+        <div class="div-img-calcular">
+          <img src="img/paralelo.png" alt="paralelogramo">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Alto (h)</p>
+              <input type="number" id="input-alto-paralelo" required>
+              <p>Base (c)</p>
+              <input type="number" id="input-base-paralelo" required>
+              <p>Hipotenusa (b)</p>
+              <input type="number" id="input-hipote-paralelo" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Perímetro: <span class="resultado-perimetro" id="resultado-perimetro"></span></p>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+          </div>
+        </div>
+      </div>  
+
+      <div class="div-calcular oculto " id="div-cubo">
+        <div class="div-img-calcular">
+          <img src="img/cubo.png" alt="cubo">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Lado (a)</p>
+              <input type="number" id="input-lado-cubo" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+            <p>Volumen:  <span class="resultado-volumen" id="resultado-volumen"></span></p>
+          </div>
+        </div>
+      </div> 
+  
+      <div class="div-calcular oculto " id="div-prisma">
+        <div class="div-img-calcular">
+          <img src="img/prisma.png" alt="prisma">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Ancho (b)</p>
+              <input type="number" id="input-ancho-prisma" required>
+              <p>Largo (l)</p>
+              <input type="number" id="input-largo-prisma" required>
+              <p>Altura (h)</p>
+              <input type="number" id="input-alto-prisma" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+            <p>Volumen:  <span class="resultado-volumen" id="resultado-volumen"></span></p>
+          </div>
+        </div>
+      </div> 
+
+      <div class="div-calcular oculto " id="div-esfera">
+        <div class="div-img-calcular">
+          <img src="img/esfera.png" alt="esfera">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Radio (r)</p>
+              <input type="number" id="input-radio-esfera" required>
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+            <p>Volumen:  <span class="resultado-volumen" id="resultado-volumen"></span></p>
+          </div>
+        </div>
+      </div> 
+
+      <div class="div-calcular oculto " id="div-cilindro">
+        <div class="div-img-calcular">
+          <img src="img/cilindro.png" alt="cilindro">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Radio (r)</p>
+              <input type="number" id="input-radio-cilindro" required>
+              <p>Altura (h)</p>
+              <input type="number" id="input-altura-cilindro" required>              
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+            <p>Volumen:  <span class="resultado-volumen" id="resultado-volumen"></span></p>
+          </div>
+        </div>
+      </div>
+
+       <div class="div-calcular oculto " id="div-cono">
+        <div class="div-img-calcular">
+          <img src="img/cono.png" alt="cono">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Radio (r)</p>
+              <input type="number" id="input-radio-cono" required>
+              <p>Altura (h)</p>
+              <input type="number" id="input-altura-cono" required>   
+              <p>Altura inclinada(a)</p>
+              <input type="number" id="input-altura-inclinada-cono" required>           
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Área:  <span class="resultado-area" id="resultado-area"></span></p>
+            <p>Volumen:  <span class="resultado-volumen" id="resultado-volumen"></span></p>
+          </div>
+        </div>
+      </div>     
+
+       <div class="div-calcular oculto " id="div-irregular">
+        <div class="div-img-calcular">
+          <img src="img/irregular.png" alt="poligono-irregular">
+        </div>
+        <div class="calcular-variables">
+          <h3 class="post-title">Introduzca las variables</h3>
+          <div class="post-body">
+            <form onsubmit="calcular(); return false;">
+              <p>Radio (r)</p>
+              <input type="number" id="input-radio-irregular" required>
+              <p>Nivel inicial (h0)</p>
+              <input type="number" id="input-alturai-irregular" required>   
+              <p>Nivel final(h1)</p>
+              <input type="number" id="input-alturaf-irregular" required>           
+              <button class="btn-primary secondary" id="btn-circulo">Calcular</button>
+            </form>
+          </div>
+          <div class="post-footer">
+            <h3 class="post-title">Resultados</h3>
+            <p>Volumen:  <span class="resultado-volumen" id="resultado-volumen"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about section-pad" id="conclu">
+    <div class="container">
+      <h2 class="section-title">Conclusión</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            En conclusión, el desarrollo de esta actividad demuestra que los <span class="texto-resaltado-3">algoritmos</span> son herramientas indispensables en el entorno tecnológico actual, ya que transforman procesos matemáticos complejos en soluciones, rápidas y precisas. Más allá de aplicar fórmulas estándar para <span class="texto-resaltado-2">figuras y sólidos regulares</span>, el diseño lógico de un algoritmo fomenta el pensamiento estructurado y la capacidad de abstracción para resolver problemas del mundo real.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© year <strong>Ronald E Betancurt</strong> · ADSO · SENA · Made with HTML, CSS &amp; JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
